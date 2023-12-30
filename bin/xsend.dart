@@ -8,6 +8,7 @@ void main(List<String> args) {
     abbr: "p",
     help: "Path to the file to send",
     mandatory: true,
+    valueHelp: "/path/to/file",
   );
 
   parser.addOption(
@@ -20,7 +21,6 @@ void main(List<String> args) {
     final results = parser.parse(args);
     send(results);
   } catch (e) {
-    print("Uh oh! Something went wrong: $e");
-    print("Usage: xsend -p <path> [-c <chat>]");
+    printHelp();
   }
 }
