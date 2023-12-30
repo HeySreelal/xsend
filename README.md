@@ -1,4 +1,6 @@
-# xSend - File Sending CLI Tool for Telegram
+# xSend 
+
+A simple file sending CLI tool (Telegram Bot) built using Dart and Televerse!
 
 ![File Transfer](https://img.shields.io/badge/-File_Transfer-brightgreen)
 ![Telegram](https://img.shields.io/badge/-Televerse-blue)
@@ -10,7 +12,7 @@
 
 xSend is a simple Command-Line Interface (CLI) tool designed to streamline the process of sending files from your local machine to your Telegram account or chat. Whether you're sharing documents, images, or any other file, xSend makes the process quick and hassle-free.
 
-## Usage
+## 📖 Usage
 
 To use xSend, follow these simple steps:
 
@@ -36,6 +38,14 @@ To use xSend, follow these simple steps:
      ```bash
      xsend -p <path-to-file> -c <chat-id>   # Specify chat ID if different from default
      ```
+
+## 👷 Build Help
+
+You can build the xSend binary using the following command:
+
+```bash
+dart compile exe bin/xsend.dart -o xsend
+```
 
 ## Environment Variables
 
