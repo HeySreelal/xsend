@@ -16,6 +16,11 @@ void main(List<String> args) {
     help: "Chat ID to send the file to",
   );
 
-  final results = parser.parse(args);
-  send(results);
+  try {
+    final results = parser.parse(args);
+    send(results);
+  } catch (e) {
+    print("Uh oh! Something went wrong: $e");
+    print("Usage: xsend -p <path> [-c <chat>]");
+  }
 }
