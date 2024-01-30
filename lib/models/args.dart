@@ -27,7 +27,7 @@ class Args {
   }
 
   /// Extensions of photo files.
-  final _photoExts = const ['jpg', 'png'];
+  final _photoExts = const ['jpg', 'png', 'jpeg'];
 
   /// Whether the file is a photo or not.
   ///
