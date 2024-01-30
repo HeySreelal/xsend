@@ -39,13 +39,17 @@ To use xSend, follow these simple steps:
       xsend <path-to-file> -c <chat-id>   # Specify chat ID if different from default
       ```
 
-   - Optionally, you now have the ability to send file content as a message. Just specify the -t flag. Please note that if the file is too large (> 4096 characters) or if the file is not a text file, this will not work.
+   - Optionally, you now have the ability to send file content as a message. Just specify the `-t` flag. Please note that if the file is too large (> 4096 characters) or if the file is not a text file, this will not work.
       ```bash
       xsend <path-to-file> -t -c <chat-id>   # Specify chat ID if different from default
       ```
+   - Again, optionally, you can specify if the file is a media file (currently, photo - `jpg`, `png`, `jpeg`, video - `mp4`, `mkv`, `webm`) using the `-m` flag.
+      ```
+      xsend <path> -m
+      ```
    - So generally speaking, the command syntax is as follows:
       ```bash
-      xsend <path-to-file> [-t] [-c <chat-id>]
+      xsend <path-to-file> [-t] [-m] [-c <chat-id>]
       ```
 
 ## 👷 Build Help
