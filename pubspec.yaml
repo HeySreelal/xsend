@@ -1,13 +1,15 @@
 name: xsend
 description: Simple command line tool to send files to your phone over Telegram.
 version: 1.0.0
-
+publish_to: none
 environment:
   sdk: ^3.2.1
 
 dependencies:
-  args: ^2.4.2
-  televerse: ^1.12.0
+  televerse:
+    git:
+      url: https://github.com/HeySreelal/televerse.git
+      ref: single-context
 
 dev_dependencies:
   lints: ^2.1.0

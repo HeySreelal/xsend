@@ -1,25 +1,30 @@
-import 'package:args/args.dart';
+import 'dart:io';
+import 'package:televerse/televerse.dart';
+import 'package:xsend/help.dart';
+import 'package:xsend/models/args.dart';
 import 'package:xsend/xsend.dart';
 
 void main(List<String> args) {
-  final ArgParser parser = ArgParser();
-  parser.addOption(
-    "path",
-    abbr: "p",
-    help: "Path to the file to send",
-    mandatory: true,
-    valueHelp: "/path/to/file",
-  );
+  if (args.isEmpty) {
+    printHelp();
+    return;
+  }
 
-  parser.addOption(
-    "chat",
-    abbr: "c",
-    help: "Chat ID to send the file to",
-  );
+  final path = args[0];
+
+  ID c;
+  if (args.contains('-c')) {
+    final chat = args[args.indexOf('-c') + 1];
+    c = ID.create(chat);
+  } else {
+    c = ID.create(Platform.environment['CHAT_ID']!);
+  }
+
+  final isContent = args.contains('-t');
 
   try {
-    final results = parser.parse(args);
-    send(results);
+    final args = Args(isContent: isContent, path: path, chat: c);
+    send(args);
   } catch (e) {
     printHelp();
   }

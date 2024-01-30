@@ -18,7 +18,7 @@ packages:
     source: hosted
     version: "6.3.0"
   args:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: args
       sha256: eef6c46b622e0494a36c5a12d10d77fb4e855501a91c1b9ef9339326e58f0596
@@ -300,11 +300,12 @@ packages:
   televerse:
     dependency: "direct main"
     description:
-      name: televerse
-      sha256: "73135af00eb328b518c305e1109e1e29ecb9a3d4ad29bb6964cdb8eda68804c4"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.12.0"
+      path: "."
+      ref: single-context
+      resolved-ref: "64529e8d92f67abaae74c24613d1caf100916146"
+      url: "https://github.com/HeySreelal/televerse.git"
+    source: git
+    version: "1.12.7"
   term_glyph:
     dependency: transitive
     description:
