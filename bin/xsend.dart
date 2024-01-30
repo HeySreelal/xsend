@@ -21,9 +21,15 @@ void main(List<String> args) {
   }
 
   final isContent = args.contains('-t');
+  final isMedia = args.contains('-m');
 
   try {
-    final args = Args(isContent: isContent, path: path, chat: c);
+    final args = Args(
+      isContent: isContent,
+      path: path,
+      chat: c,
+      isMedia: isMedia,
+    );
     send(args);
   } catch (e) {
     printHelp();

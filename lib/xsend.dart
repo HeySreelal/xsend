@@ -28,9 +28,19 @@ Future<void> send(Args args) async {
       "```${args.fileExt}\n$content```",
       parseMode: ParseMode.markdownV2,
     );
-  } else {
-    await bot.api.sendDocument(args.chat, InputFile.fromFile(file));
+    return;
   }
+
+  if (args.isMedia) {
+    if (args.isPhoto) {
+      await bot.api.sendPhoto(args.chat, InputFile.fromFile(file));
+    }
+    if (args.isVideo) {
+      await bot.api.sendVideo(args.chat, InputFile.fromFile(file));
+    }
+  }
+
+  await bot.api.sendDocument(args.chat, InputFile.fromFile(file));
 
   print("Done!");
 }
