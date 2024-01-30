@@ -22,7 +22,7 @@ To use xSend, follow these simple steps:
 2. **Run the Command:**
    - Open your terminal and execute the following command:
      ```bash
-     xsend -p <path-to-file>
+     xsend <path-to-file>
      ```
 
 3. **Bot Token Setup:**
@@ -35,9 +35,18 @@ To use xSend, follow these simple steps:
 
 5. **Send Files:**
    - Execute the xSend command with the path to the file you want to send:
-     ```bash
-     xsend -p <path-to-file> -c <chat-id>   # Specify chat ID if different from default
-     ```
+      ```bash
+      xsend <path-to-file> -c <chat-id>   # Specify chat ID if different from default
+      ```
+
+   - Optionally, you now have the ability to send file content as a message. Just specify the -t flag. Please note that if the file is too large (> 4096 characters) or if the file is not a text file, this will not work.
+      ```bash
+      xsend <path-to-file> -t -c <chat-id>   # Specify chat ID if different from default
+      ```
+   - So generally speaking, the command syntax is as follows:
+      ```bash
+      xsend <path-to-file> [-t] [-c <chat-id>]
+      ```
 
 ## 👷 Build Help
 
@@ -55,7 +64,7 @@ dart compile exe bin/xsend.dart -o xsend
 ## Example
 
 ```bash
-xsend -p /path/to/myfile.txt -c 12345678
+xsend /path/to/myfile.txt -c 12345678
 ```
 
 Feel free to contribute and enhance the functionality of xSend. If you encounter any issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/HeySreelal/xSend).
