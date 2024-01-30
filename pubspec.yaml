@@ -1,6 +1,6 @@
 name: xsend
 description: Simple command line tool to send files to your phone over Telegram.
-version: 1.0.0
+version: 1.0.2
 publish_to: none
 environment:
   sdk: ^3.2.1
