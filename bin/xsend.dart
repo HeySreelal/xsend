@@ -4,7 +4,7 @@ import 'package:xsend/help.dart';
 import 'package:xsend/models/args.dart';
 import 'package:xsend/xsend.dart';
 
-void main(List<String> args) {
+void main(List<String> args) async {
   if (args.isEmpty) {
     printHelp();
     return;
@@ -30,8 +30,9 @@ void main(List<String> args) {
       chat: c,
       isMedia: isMedia,
     );
-    send(args);
+    await send(args);
   } catch (e) {
+    print('Oops, something went wrong!');
     printHelp();
   }
 }
