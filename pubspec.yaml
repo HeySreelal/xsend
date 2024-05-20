@@ -6,10 +6,7 @@ environment:
   sdk: ^3.2.1
 
 dependencies:
-  televerse:
-    git:
-      url: https://github.com/HeySreelal/televerse.git
-      ref: single-context
+  televerse: ^1.16.0
 
 dev_dependencies:
   lints: ^2.1.0
