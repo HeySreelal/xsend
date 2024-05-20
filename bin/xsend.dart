@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:televerse/televerse.dart';
 import 'package:xsend/help.dart';
 import 'package:xsend/models/args.dart';
@@ -12,12 +11,10 @@ void main(List<String> args) async {
 
   final path = args[0];
 
-  ID c;
+  ID? chat;
   if (args.contains('-c')) {
-    final chat = args[args.indexOf('-c') + 1];
-    c = ID.create(chat);
-  } else {
-    c = ID.create(Platform.environment['CHAT_ID']!);
+    final c = args[args.indexOf('-c') + 1];
+    chat = ID.create(c);
   }
 
   final isContent = args.contains('-t');
@@ -27,7 +24,7 @@ void main(List<String> args) async {
     final args = Args(
       isContent: isContent,
       path: path,
-      chat: c,
+      chat: chat,
       isMedia: isMedia,
     );
     await send(args);
