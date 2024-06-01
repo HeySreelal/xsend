@@ -52,6 +52,30 @@ To use xSend, follow these simple steps:
       xsend <path-to-file> [-t] [-m] [-c <chat-id>]
       ```
 
+## 🍮 Even more customization 
+You can create a custom configuration settings file to explicitly specify chats to store your file based on file extension. For example, if you want your pdf files to be sent to a particular Telegram chat a custom config file would be a great time saver for you.
+
+To setup custom config file, you need to create a JSON file with the schema specified in [config_schema.json](./config_schema.json). Inside the `chat_id_map` property you can map the file extension to chat id.
+
+Example of Custom Config File:
+
+```json
+{
+    "$schema": "https://raw.githubusercontent.com/HeySreelal/xsend/main/config_schema.json",
+    "chat_id_map": {
+        "apk": {
+            "id": -1001344696859
+        },
+        "png": {
+            "id": -1001742213798,
+            "topic": 176
+        }
+    }
+}
+```
+
+Now, set the Environment Variable `XSEND_CONFIG_PATH` to the absolute path to the custom configuration JSON file. That's it.
+
 ## 👷 Build Help
 
 You can build the xSend binary using the following command:
@@ -64,6 +88,7 @@ dart compile exe bin/xsend.dart -o xsend
 
 - `BOT_TOKEN`: Telegram bot token obtained from [@BotFather].
 - `CHAT_ID` (Optional): Default chat ID for sending files. If not specified, the tool will prompt for a chat ID during execution.
+- `XSEND_CONFIG_PATH` (Optional): Custom configuration file.
 
 ## Example
 
@@ -71,7 +96,7 @@ dart compile exe bin/xsend.dart -o xsend
 xsend /path/to/myfile.txt -c 12345678
 ```
 
-Feel free to contribute and enhance the functionality of xSend. If you encounter any issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/HeySreelal/xSend).
+Feel free to contribute and enhance the functionality of xsend. If you encounter any issues or have suggestions, please open an issue on the [GitHub repository](https://github.com/HeySreelal/xsend).
 
 Happy Sending! 🚀
 
