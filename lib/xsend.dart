@@ -24,23 +24,36 @@ Future<void> send(Args args) async {
     }
 
     await bot.api.sendMessage(
-      args.chat,
+      args.getChat(),
       "```${args.fileExt}\n$content```",
       parseMode: ParseMode.markdownV2,
+      messageThreadId: args.getThreadId(),
     );
     return;
   }
 
   if (args.isMedia) {
     if (args.isPhoto) {
-      await bot.api.sendPhoto(args.chat, InputFile.fromFile(file));
+      await bot.api.sendPhoto(
+        args.getChat(),
+        InputFile.fromFile(file),
+        messageThreadId: args.getThreadId(),
+      );
     }
     if (args.isVideo) {
-      await bot.api.sendVideo(args.chat, InputFile.fromFile(file));
+      await bot.api.sendVideo(
+        args.getChat(),
+        InputFile.fromFile(file),
+        messageThreadId: args.getThreadId(),
+      );
     }
   }
 
-  await bot.api.sendDocument(args.chat, InputFile.fromFile(file));
+  await bot.api.sendDocument(
+    args.getChat(),
+    InputFile.fromFile(file),
+    messageThreadId: args.getThreadId(),
+  );
 
   print("Done!");
 }
