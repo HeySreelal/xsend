@@ -3,20 +3,27 @@
     "type": "object",
     "properties": {
         "chat_id_map": {
+            "description": "The Chat ID Map, you can specify the chat ID against file extension.",
             "type": "object",
             "patternProperties": {
                 "^[a-zA-Z0-9]+$": {
-                    "oneOf": [
-                        {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "description": "The Chat ID - the unique id of the chat to which the file should be sent to.",
                             "type": "integer"
                         },
-                        {
-                            "type": "string"
+                        "topic": {
+                            "description": "Works only on Forum chats. This id will be set as the message_thread_id to send file to the particular topic inside the forum.",
+                            "type": "integer"
                         }
-                    ]
+                    },
+                    "required": [
+                        "id"
+                    ],
+                    "additionalProperties": false
                 }
-            },
-            "additionalProperties": false
+            }
         }
     }
 }
