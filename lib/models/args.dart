@@ -82,8 +82,9 @@ class Args {
   /// the chat id specified by the -c flag.
   ID getChat() {
     final mappedId = config?.chatIDMap?[fileExt];
-
-    if (mappedId != null) return mappedId;
+    if (mappedId != null) {
+      return mappedId.id;
+    }
 
     if (chat != null) return chat!;
 
@@ -91,5 +92,12 @@ class Args {
     final notAvailable = env == null || env.isEmpty;
     if (notAvailable) throw Exception("Could not find a Chat ID ");
     return ID.create(env);
+  }
+
+  int? getThreadId() {
+    final mappedId = config?.chatIDMap?[fileExt];
+    if (mappedId != null) return mappedId.topic;
+
+    return null;
   }
 }
