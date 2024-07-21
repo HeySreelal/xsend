@@ -19,17 +19,35 @@ void main(List<String> args) async {
 
   final isContent = args.contains('-t');
   final isMedia = args.contains('-m');
+  final isDebug = args.contains('--debug');
+  final needStackTrace = args.contains('--stack');
+
+  final xsendArgs = Args(
+    isContent: isContent,
+    path: path,
+    chat: chat,
+    isMedia: isMedia,
+    isDebug: isDebug,
+  );
 
   try {
-    final args = Args(
-      isContent: isContent,
-      path: path,
-      chat: chat,
-      isMedia: isMedia,
-    );
-    await send(args);
-  } catch (e) {
+    if (isDebug) {
+      print(args);
+      print("[debug] Starting the send process.");
+    }
+
+    await send(xsendArgs);
+    if (isDebug) {
+      print("[debug] Starting the send process.");
+    }
+  } catch (e, stack) {
     print('Oops, something went wrong!');
     printHelp();
+    if (xsendArgs.isDebug) {
+      print(e);
+    }
+    if (needStackTrace) {
+      print(stack);
+    }
   }
 }

@@ -1,6 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
 
 import 'package:televerse/televerse.dart';
+
 import 'package:xsend/models/config.dart';
 
 class Args {
@@ -11,6 +13,7 @@ class Args {
     required this.path,
     this.hasCustomConfig = false,
     this.config,
+    this.isDebug = false,
   });
 
   /// When true, the content of the file is sent to the end user.
@@ -31,12 +34,16 @@ class Args {
   /// The custom configuration data
   final XsendConfig? config;
 
+  /// Whether running for debug purpose
+  final bool isDebug;
+
   /// A class that contains the arguments to be passed to the `send` method.
   factory Args({
     required String path,
     bool isContent = false,
     bool isMedia = false,
     ID? chat,
+    bool isDebug = false,
   }) {
     final configPath = Platform.environment["XSEND_CONFIG_PATH"];
     final configFile = configPath != null ? File(configPath) : null;
@@ -50,6 +57,7 @@ class Args {
       config: hasCustomConfig
           ? XsendConfig.fromJson(configFile!.readAsStringSync())
           : null,
+      isDebug: isDebug,
     );
   }
 
@@ -99,5 +107,10 @@ class Args {
     if (mappedId != null) return mappedId.topic;
 
     return null;
+  }
+
+  @override
+  String toString() {
+    return 'Args(isContent: $isContent, path: $path, chat: $chat, isMedia: $isMedia, hasCustomConfig: $hasCustomConfig, config: $config, isDebug: $isDebug)';
   }
 }
